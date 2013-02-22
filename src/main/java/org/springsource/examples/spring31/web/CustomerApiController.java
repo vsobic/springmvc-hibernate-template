@@ -1,15 +1,21 @@
 package org.springsource.examples.spring31.web;
 
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springsource.examples.spring31.services.Customer;
-import org.springsource.examples.spring31.services.CustomerService;
-
+import java.nio.charset.Charset;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springsource.examples.spring31.services.Customer;
+import org.springsource.examples.spring31.services.CustomerService;
 
 //
 //@RequestMapping(
@@ -26,10 +32,17 @@ public class CustomerApiController {
     @ResponseBody
     @RequestMapping(value = "/crm/search", method = RequestMethod.GET)
     public Collection<Customer> search(@RequestParam("q") String query) throws Exception {
+        query = reEncode(query);
         Collection<Customer> customers = customerService.search(query);
         if (log.isDebugEnabled())
             log.debug(String.format("retrieved %s results for search query '%s'", Integer.toString(customers.size()), query));
         return customers;
+    }
+
+    private String reEncode( String input ) {
+        Charset w1252 = Charset.forName("Windows-1252"); //Superset of ISO-8859-1
+        Charset utf8 = Charset.forName("UTF-8");
+        return new String(input.getBytes(w1252), utf8 );
     }
 
     @ResponseBody

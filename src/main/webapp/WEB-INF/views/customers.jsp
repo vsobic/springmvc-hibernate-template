@@ -1,8 +1,10 @@
 <%@ page session="false" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html ng-app>
 <head>
 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="${pageContext.request.contextPath}/web/assets/js/jquery-1.7.2.min.js"></script>
     <script src="${pageContext.request.contextPath}/web/assets/js/angular-1.0.0rc6.js"></script>
     <script src="${pageContext.request.contextPath}/web/views/customers.js"></script>
