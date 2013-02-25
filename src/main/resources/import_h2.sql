@@ -14,3 +14,7 @@ INSERT INTO customer(firstname, lastname, signupdate) values ('Raja','Rao', NOW(
 INSERT INTO customer(firstname, lastname, signupdate) values ('Rajdeep','Dua', NOW() );
 INSERT INTO customer(firstname, lastname, signupdate) values ('Monica','Wilkinson', NOW() );
 INSERT INTO customer(firstname, lastname, signupdate) values ('Mark','Pollack', NOW() );
+INSERT INTO customer(firstname, lastname, signupdate) values ('Brane', 'Ivanović', NOW());
+INSERT INTO customer(firstname, lastname, signupdate) values ('Бране', 'Ивановић', NOW());
+INSERT INTO customer(firstname, lastname, signupdate) values ('Дејан', 'Димитријевић', NOW());
+INSERT INTO customer(firstname, lastname, signupdate) values ('Владимир', 'Шобић', NOW());
